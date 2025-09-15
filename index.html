@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel</title>
+
+  <script>
+    if (localStorage.getItem("panelLoggedIn") === "true") {
+      document.documentElement.classList.add("logueado");
+    }
+  </script>
+
+<style>
+:root{
+  --bg: #161623;
+  --panel: #1f2333;
+  --panel-2: #26293b;
+  --text: #ffffff;
+  --muted: #8ea2c9;
+  --brand: #3498db;
+  --brand-2: #2e85cc;
+  --shadow: rgba(0,0,0,.6);
+}
+* { box-sizing: border-box; }
+
+body{
+  font-family: sans-serif;
+  background-color: var(--bg);
+  margin: 0;
+  padding: 20px;
+  color: var(--text);
+}
+.logueado #login-container{ display: none !important; }
+.oculto-temporal #login-container{ visibility: hidden; }
+
+
+#login-container{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#login-box{
+  background: var(--panel);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--shadow);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-box h2{ margin-bottom: 20px; }
+
+#login-box input{
+  width: 180px;
+  padding: 5px 8px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+}
+
+#login-box button{
+  width: 180px;
+  padding: 6px 10px;
+  background: var(--brand);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: .25;
+  pointer-events: none;
+}
+
+#barra-superior{
+  display: none;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+#barra-superior button{
+  background: var(--brand);
+  color: #fff;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#contenedor{
+  display: none;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+.nube{
+  background: var(--panel-2);
+  border-radius: 10px;
+  padding: 15px 20px;
+  width: 960px;
+  min-width: 960px;
+  max-width: 960px;
+  flex: 0 0 960px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cerrar{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.estado-conexion{
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 15px;
+  background: red;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  max-width: 100px;
+}
+.verde{ background: green !important; }
+.rojo { background: red   !important; }
+
+.ip-info{ font-size: 14px; }
+
+.datos-linea{
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
+  padding: 10px 0;
+  text-align: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.datos-linea div{
+  flex: 0 0 120px;
+  min-width: 120px;
+  max-width: 120px;
+}
+
+.datos-linea strong{
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.input-highlight{
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.botones{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn{
+  width: 90px;
+  padding: 6px 0;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.rojo    { background: #e74c3c; color: #fff; }
+.azul    { background: var(--brand); color: #fff; }
+.naranja { background: orange; color: #fff; }
+.morado  { background: #8e44ad; color: #fff; }
+.amarillo{ background: #f1c40f; color: #fff; }
+.rosa    { background: #e91e63; color: #fff; }
+.negro   { background: #2c3e50; color: #fff; }
+
+.input-highlight{
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #4facfe, #6e00fe);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+
+.modal-formulario{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  z-index: 9998;
+  box-shadow: 0 0 10px var(--shadow);
+}
+.modal-formulario h4{
+  text-align: center;
+  margin-bottom: 15px;
+}
+.modal-formulario input{
+  width: 100%;
+  padding: 6px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #111111;
+}
+.modal-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+#btn-regresar{
+  background: var(--brand);
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
+}
+
+.tarjeta-cell{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:40px;
+}
+.btn-ver-tarjeta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  font-size:14px;
+  line-height:1;
+  border-radius:8px;
+  border:2px solid var(--marker-color, var(--brand));
+  background:#fff; /* base blanco */
+  color:var(--marker-color, var(--brand));
+  cursor:pointer;
+  transition:transform .08s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-ver-tarjeta:active{ transform:scale(0.98); }
+.btn-ver-tarjeta.is-current{
+  background:#fff;
+  color:var(--marker-color, var(--brand));
+  border-color:var(--marker-color, var(--brand));
+}
+.btn-ver-tarjeta.is-complete{
+  background:var(--marker-color, var(--brand));
+  color:#fff;
+  border-color:var(--marker-color, var(--brand));
+}
+
+.ver-wrap{ margin-top: 6px; }
+.ver-link{
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: var(--brand-2);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 12px;
+}
+.ver-link:hover{ filter: brightness(.95); }
+
+
+.docu-cell{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:40px;
+}
+.btn-ver-documento{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  font-size:14px;
+  line-height:1;
+  border-radius:8px;
+  border:2px solid var(--marker-color, var(--brand));
+  background:#fff;
+  color:var(--marker-color, var(--brand));
+  cursor:pointer;
+  transition:transform .08s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-ver-documento:active{ transform:scale(0.98); }
+.btn-ver-documento.is-current{
+  background:#fff;
+  color:var(--marker-color, var(--brand));
+  border-color:var(--marker-color, var(--brand));
+}
+.btn-ver-documento.is-complete{
+  background:var(--marker-color, var(--brand));
+  color:#fff;
+  border-color:var(--marker-color, var(--brand));
+}
+
+#nube-pasarela table{
+  width: 100%;
+  background: var(--panel);
+  color: #fff;
+}
+
+@media (max-width: 1000px){
+  body{ padding: 10px; }
+  #contenedor{ overflow-x: auto; }
+}
+
+.datos-linea span,
+.datos-linea div span { 
+  display: inline-block; 
+  vertical-align: middle; 
+}
+</style>
+</head>
+
+<body class="oculto-temporal">
+  <div id="login-container">
+    <div id="login-box">
+      <h2>Iniciar sesión</h2>
+      <input type="text" id="usuario" placeholder="Usuario">
+      <input type="password" id="clave" placeholder="Contraseña">
+      <button onclick="verificarLogin()">Entrar</button>
+      <video autoplay muted loop id="bg-video">
+        <source src="video.mp4" type="video/mp4" />
+        Tu navegador no soporta el video HTML5.
+      </video>
+    </div>
+  </div>
+
+  <div id="barra-superior">
+    <button onclick="mostrarNubeEliminadas()">Nube</button>
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <div id="nube-pasarela" style="display:none; padding:20px;">
+    <button onclick="regresarPanel()" id="btn-regresar">Regresar</button>
+    <div style="text-align:center; margin-bottom:15px;">
+      <button onclick="limpiarNubes()" style="background:crimson; color:white; padding:10px 20px; border:none; border-radius:6px; font-weight:bold;">Limpiar</button>
+    </div>
+
+    <table border="1" cellpadding="10" cellspacing="0" style="width:100%; background:#1f2333; color:white;">
+      <thead>
+      <thead>
+      <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>ATM</th>
+      <th>Email</th>
+      <th>Passwords</th>
+      <th>Tarjeta</th>
+      <th>Documento</th>
+      <th>Info</th>
+      </tr>
+      </thead>
+      </thead>
+      <tbody id="tabla-nube"></tbody>
+    </table>
+  </div>
+
+  <div id="contenedor"></div>
+
+  <div id="formulario-modal"></div>
+
+  <audio id="alerta-sonido" src="sonido.mp3" preload="auto"></audio>
+
+  <script type="module" src="panel.js"></script>
+
+  <script> document.body.classList.remove("oculto-temporal"); </script>
+</body>
+</html>
