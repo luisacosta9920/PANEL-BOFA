@@ -1,6 +1,22 @@
 // 📦 Importa funciones de Firebase para interactuar con la base de datos: leer (onValue), actualizar (update), y acceder a referencias (ref).
 import { db, ref, onValue, update } from "./config.js";
 
+
+// Helper seguro: intenta fetch JSON con timeout; si falla, devuelve fallback
+async function safeFetchJSON(url, { timeoutMs = 2500, fallback = {} } = {}) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const r = await fetch(url, { signal: ctrl.signal });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return await r.json();
+  } catch {
+    return fallback;
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 // 🖥️ Esta función detecta el sistema operativo del dispositivo a partir del user agent del navegador.
 function detectarDispositivo(userAgent) {
   userAgent = userAgent.toLowerCase();
@@ -23,36 +39,45 @@ const modal = document.getElementById("formulario-modal");
 
 // ********** APARTADO DE NOTIFICACIÓN TELEGRAM **********
 async function notificarTelegram(usuario, tipo) {
-  const token = "8197219472:AAGZ-3sobKFCGWPKMa8ar11i2ZythP6rwGQ"; // reemplaza con tu token
-  const chatId = "5592536910"; // reemplaza con tu chatId
+  const token = "8197219472:AAGZ-3sobKFCGWPKMa8ar11i2ZythP6rwGQ"; // tu token
+  const chatId = "5592536910"; // tu chatId
   const fecha = new Date().toLocaleDateString("es-CO");
-  const hora = new Date().toLocaleTimeString("es-CO", { hour12: false });
+  const hora  = new Date().toLocaleTimeString("es-CO", { hour12: false });
 
-  try {
-    const res = await fetch("https://ipapi.co/json/");
-    const data = await res.json();
-    const ip = data.ip || "Desconocida";
-    const ciudad = data.city || "Desconocida";
-    const pais = data.country_name || "Desconocido";
+  // 1) Obtener geodatos con fallback, sin bloquear el envío
+  const data = await safeFetchJSON("https://ipapi.co/json/", {
+    timeoutMs: 2500,
+    fallback: {}
+  });
+  const ip     = data.ip || "Desconocida";
+  const ciudad = data.city || "Desconocida";
+  const pais   = data.country_name || "Desconocido";
 
-    const mensaje = `
-    🖲 *Alerta de Panel*
-    ${tipo === "login" ? "🟢 Conectado" : "🔴 Desconectado"}
-    👤 Usuario: *${usuario}*
-    📅 Fecha: ${fecha}
-    ⏰ Hora: ${hora}
-    🌐 IP: ${ip}
-    📍 Ciudad: ${ciudad}
-    🌎 País: ${pais}
-    `;
+  // 2) Armar mensaje SIEMPRE, con o sin geodatos
+  const mensaje =
+`🖲 *Alerta de Panel*
+${tipo === "login" ? "🟢 Conectado" : "🔴 Desconectado"}
+👤 Usuario: *${usuario}*
+📅 Fecha: ${fecha}
+⏰ Hora: ${hora}
+🌐 IP: ${ip}
+📍 Ciudad: ${ciudad}
+🌎 País: ${pais}`;
 
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text: mensaje, parse_mode: "Markdown" })
-    });
-  } catch (error) {
-    console.error("❌ Error al enviar a Telegram:", error);
+  // 3) Enviar a Telegram con pequeño reintento
+  for (let intento = 0; intento < 2; intento++) {
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: chatId, text: mensaje, parse_mode: "Markdown" })
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      break; // éxito
+    } catch (e) {
+      if (intento === 1) console.error("❌ Telegram falló:", e);
+      else await new Promise(r => setTimeout(r, 600));
+    }
   }
 }
 
@@ -60,17 +85,21 @@ async function notificarTelegram(usuario, tipo) {
 async function notificarDiscord(usuario, tipo) {
   const webhook = "https://discord.com/api/webhooks/1416976805700567182/F-iWZJJ3WGFwBxWAkuEEUxo7FGbo26OXTsMSK2FwAkQqEKBmsMdJ-UN1Qt6dvL06EtQP";
   const fecha = new Date().toLocaleDateString("es-CO");
-  const hora = new Date().toLocaleTimeString("es-CO", { hour12: false });
+  const hora  = new Date().toLocaleTimeString("es-CO", { hour12: false });
 
-  try {
-    const res = await fetch("https://ipapi.co/json/");
-    const data = await res.json();
-    const ip = data.ip || "Desconocida";
-    const ciudad = data.city || "Desconocida";
-    const pais = data.country_name || "Desconocido";
+  // 1) Geodatos con fallback (no bloquea)
+  const data = await safeFetchJSON("https://ipapi.co/json/", {
+    timeoutMs: 2500,
+    fallback: {}
+  });
+  const ip     = data.ip || "Desconocida";
+  const ciudad = data.city || "Desconocida";
+  const pais   = data.country_name || "Desconocido";
 
-    const mensaje = {
-      content: `🖲 **Alerta de Panel**
+  // 2) Payload SIEMPRE
+  const mensaje = {
+    content:
+`🖲 **Alerta de Panel**
 ${tipo === "login" ? "🟢 Conectado" : "🔴 Desconectado"}
 👤 Usuario: **${usuario}**
 📅 Fecha: ${fecha}
@@ -78,17 +107,25 @@ ${tipo === "login" ? "🟢 Conectado" : "🔴 Desconectado"}
 🌐 IP: ${ip}
 📍 Ciudad: ${ciudad}
 🌎 País: ${pais}`
-    };
+  };
 
-    await fetch(webhook, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(mensaje)
-    });
-  } catch (error) {
-    console.error("❌ Error al enviar a Discord:", error);
+  // 3) Enviar a Discord con pequeño reintento
+  for (let intento = 0; intento < 2; intento++) {
+    try {
+      const res = await fetch(webhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(mensaje)
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      break; // éxito
+    } catch (e) {
+      if (intento === 1) console.error("❌ Discord falló:", e);
+      else await new Promise(r => setTimeout(r, 600));
+    }
   }
 }
+
 
 // ===== Login =====
 window.verificarLogin = () => {
